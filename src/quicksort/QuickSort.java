@@ -6,14 +6,18 @@
 package quicksort;
 
 /**
- *
- * @author lauren
+ * QuickSort, takes array and sorts using QuickSort. Times against QuickSort on unsorted vs already sorted.
+ * @author Matthew Dods 420190038
  */
 public class QuickSort {
     
     private CatalogueItem[] items;
     private int number;
-
+    
+    /**
+     * sort, checks if array has items if does calls the QuickSort method.
+     * @param values 
+     */
     public void sort(CatalogueItem[] values) {
         // check for empty or null array
         if (values ==null || values.length==0){
@@ -25,6 +29,11 @@ public class QuickSort {
         quicksort(0, number - 1);
     }
 
+    /**
+     * quicksort, sorts array using QuickSort method.
+     * @param low
+     * @param high 
+     */
     private void quicksort(int low, int high) {
         int i = low, j = high;
         // Get the pivot element from the middle of the list
@@ -61,6 +70,11 @@ public class QuickSort {
             quicksort(i, high);
     }
 
+    /**
+     * exchange, takes two items in a list and swaps their placing.
+     * @param i - first item being compared
+     * @param j - second item being compared
+     */
     private void exchange(int i, int j) {
         CatalogueItem temp = items[i];
         items[i] = items[j];
@@ -68,7 +82,10 @@ public class QuickSort {
     }
 
  
-    /* Prints the array */
+    /**
+     * printArray, prints the array.
+     * @param arr - list
+     */
     void printArray(CatalogueItem arr[])
     {
         int n = arr.length;
@@ -81,7 +98,7 @@ public class QuickSort {
         System.out.println();
     }
     
-    // Driver method to test above
+    
     public static void main(String args[])
     {
         QuickSort ob = new QuickSort();
@@ -99,7 +116,7 @@ public class QuickSort {
         System.out.println("The Unsorted array is");
         ob.printArray(arr);
         
-        //apply sort
+        // apply sort on unsorted list
         long startTime = System.nanoTime();
         ob.sort(arr);
         long stopTime = System.nanoTime();
@@ -110,6 +127,7 @@ public class QuickSort {
         System.out.println("\nQuicksort took " + time + "ns long.");
         System.out.println("\nRunning sort again for testing...");
         
+        // apply sort on now sorted list
         long startTime2 = System.nanoTime();
         ob.sort(arr);
         long stopTime2 = System.nanoTime();
